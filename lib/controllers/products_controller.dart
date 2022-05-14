@@ -1,8 +1,8 @@
 import 'package:get/state_manager.dart';
 import 'package:getx_state_management/models/product.dart';
 
-class ShoppingController extends GetxController {
-  var loading = false.obs;
+class ProductsController extends GetxController {
+  var loading = true.obs;
   var products = <Product>[].obs;
 
   @override
