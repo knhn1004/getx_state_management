@@ -2,6 +2,7 @@ import 'package:get/state_manager.dart';
 import 'package:getx_state_management/models/product.dart';
 
 class ShoppingController extends GetxController {
+  var loading = false.obs;
   var products = <Product>[].obs;
 
   @override
@@ -50,5 +51,6 @@ class ShoppingController extends GetxController {
       ),
     ];
     products.value = serverResponse;
+    loading.value = false;
   }
 }

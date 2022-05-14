@@ -6,6 +6,8 @@ import 'package:getx_state_management/views/shopping_page/product_card.dart';
 class ShoppingPage extends StatelessWidget {
   final _controller = Get.put(ShoppingController());
 
+  ShoppingPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +19,7 @@ class ShoppingPage extends StatelessWidget {
           child: Column(children: [
             Expanded(
               child: GetX<ShoppingController>(
+                  // TODO: check loading state
                   builder: (controller) => ListView.builder(
                         itemCount: _controller.products.length,
                         itemBuilder: (ctx, i) => ProductCard(
