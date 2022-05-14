@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:getx_state_management/models/product.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    Key? key,
-  }) : super(key: key);
+  final Product product;
+
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +18,25 @@ class ProductCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Image.network(
+                    product.productImage,
+                    height: 100,
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('Product 1', style: TextStyle(fontSize: 24)),
-                          Text('Product 1 description',
-                              style: TextStyle(fontSize: 16)),
+                        children: [
+                          Text(product.productName,
+                              style: const TextStyle(fontSize: 24)),
+                          Text(product.productDescription,
+                              style: const TextStyle(fontSize: 16)),
                         ],
                       ),
-                      const Text('\$10.00',
-                          style: TextStyle(fontSize: 16, color: Colors.green)),
+                      Text(product.price.toString(),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.green)),
                     ],
                   ),
                   ElevatedButton(

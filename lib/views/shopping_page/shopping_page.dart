@@ -9,18 +9,24 @@ class ShoppingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(children: [
-        Expanded(
-          child: GetX<ShoppingController>(
-              builder: (controller) => ListView.builder(
-                    itemCount: _controller.products.length,
-                    itemBuilder: (ctx, i) => const ProductCard(),
-                  )),
+        appBar: AppBar(
+          title: const Text('Shopping'),
+          elevation: 0,
         ),
-        const Text('Total Amount: '),
-        const SizedBox(height: 100)
-      ]),
-    ));
+        body: SafeArea(
+          child: Column(children: [
+            Expanded(
+              child: GetX<ShoppingController>(
+                  builder: (controller) => ListView.builder(
+                        itemCount: _controller.products.length,
+                        itemBuilder: (ctx, i) => ProductCard(
+                          product: _controller.products[i],
+                        ),
+                      )),
+            ),
+            const Text('Total Amount: '),
+            const SizedBox(height: 100)
+          ]),
+        ));
   }
 }
